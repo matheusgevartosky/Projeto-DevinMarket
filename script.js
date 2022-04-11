@@ -6,113 +6,101 @@ document.querySelector("#teste").addEventListener("click", function (e) {
     
   });
   
-  const taskList = [];
-    const completedTasks = [];
+  let itemList = [];
+  let CheckedItem = [];
+  let valorTotal = 0
   
-  if (JSON.parse(localStorage.getItem("taskList")))
-    taskList = JSON.parse(localStorage.getItem("taskList"));
-  else localStorage.setItem("taskList", JSON.stringify(taskList));
+  if (JSON.parse(localStorage.getItem("itemList")))
+    itemList = JSON.parse(localStorage.getItem("itemList"));
+  else localStorage.setItem("itemList", JSON.stringify(itemList));
   
   updateCompletedListArray();
   updateListView();
   
   function updateCompletedListArray() {
-    completedTasks = [];
-  410
-    taskList.forEach(function (task) {
-      if (task.done) completedTasks.push(taskList.index/~,Of(task) + "");
+    itemList.forEach(function (task) {
+      if (task.done) CheckedItem.push(itemList.indexOf(task) + "");
     });
   }
   
   function addToList(task) {
-    taskList.push({
+    itemList.push({
       name: task,
       done: false,
     });
   
     updateListView();
   
-    localStorage.setItem("taskList", JSON.stringify(taskList));
+    localStorage.setItem("itemList", JSON.stringify(itemList));
     document.querySelector("#teste").value = "";
   }
   
   function updateListView() {
-    var ul = document.getElementById("taskList");
+    const container = document.getElementById("itemList");
   
-    ul.innerHTML = "";
-  
-    taskList.forEach(function (task) {
-      var listItem = document.createElement("li"),
-        taskLabel = document.createElement("label"),
-        delBtn = document.createElement("span"),
-        editBtn = document.createElement("span"),
-        checkbox = document.createElement("input");
-  
-      listItem.className = "task";
-      listItem.id = taskList.indexOf(task);
-  
+    container.innerHTML = "";
+
+    itemList.forEach(function (task) {
+      const itemContainer = document.createElement("div");
+      itemContainer.className = "task";
+      itemContainer.id = itemList.indexOf(task);
+
+      const buttonContainer = document.createElement('div')
+      buttonContainer.className = "btnContainer"
+      
+      const taskLabel = document.createElement("label");
       taskLabel.className = "taskLabel";
       taskLabel.textContent = task.name;
-      taskLabel.htmlFor = taskList.indexOf(task);
-  
-      delBtn.className = "deleteTaskBtn";
+      taskLabel.htmlFor = itemList.indexOf(task);
+
+      const delBtn = document.createElement("span");
+      delBtn.className = "deleteItemBtn";
       delBtn.textContent = "x";
-      delBtn.onclick = deleteThisTask;
-  
-      /*editBtn.className = "editTaskBtn";
-      editBtn.textContent = "Editar";
-      editBtn.onclick = editThisTask;*/
-  
+      delBtn.onclick = deleteThisItem;
+
+      const checkbox = document.createElement("input");
       checkbox.className = "taskCheckbox";
-      checkbox.id = taskList.indexOf(task);
-     
-     pç  checkbox.type = "checkbox";
+      checkbox.id = itemList.indexOf(task);
+      checkbox.type = "checkbox";
       checkbox.checked = task.done;
       checkbox.onclick = checkTask;
-  
-      listItem.appendChild(checkbox);
-      listItem.appendChild(taskLabel);
-      listItem.appendChild(delBtn);
-      listItem.appendChild(editBtn);
-      ul.appendChild(listItem);
+
+      itemContainer.appendChild(taskLabel);
+      itemContainer.appendChild(checkbox);
+      itemContainer.appendChild(delBtn);
+      container.appendChild(itemContainer);
     });
   }
   
   function checkTask(e) {
-    var checkStatus = e.target.checked,
+    let checkStatus = e.target.checked,
       task = e.target.parentElement,
-      taskId = task.id,
+      itemId = task.id,
       removed = false;
+    itemList[itemId].done = checkStatus;
   
-    taskList[taskId].done = checkStatus;
-  
-    if (completedTasks.length === 0) {
-      completedTasks.push(taskId);
+    if (CheckedItem.length === 0) {
+      CheckedItem.push(itemId);
     } else {
-      completedTasks.forEach(function (index) {
-        if (taskId === index) {
-          completedTasks.splice(completedTasks.indexOf(index), 1);
+      CheckedItem.forEach(function (index) {
+        if (itemId === index) {
+          CheckedItem.splice(CheckedItem.indexOf(index), 1);
           removed = true;
         }
       });
   
       if (!removed) {
-        completedTasks.push(taskId);
-        completedTasks.sort();
+        CheckedItem.push(itemId);
+        CheckedItem.sort();
       }
     }
   
     saveLocalList();
   }
   
-  /*function editThisTask(e) {
-    saveLocalList();
-    updateCompletedListArray();
-    updateListView();*/
   
-  
-  function deleteThisTask(e) {
-    taskList.splice(e.target.parentElement.id, 1);
+  function deleteThisItem(e) {
+    itemList.splice(e.target.parentElement.id, 1);
   
     saveLocalList();
     updateCompletedListArray();
@@ -120,5 +108,9 @@ document.querySelector("#teste").addEventListener("click", function (e) {
   }
   
   function saveLocalList() {
-    localStorage.setItem("taskList", JSON.stringify(taskList));
+    localStorage.setItem("itemList", JSON.stringify(itemList));
+  }
+
+  const check = (e) => {
+    
   }
