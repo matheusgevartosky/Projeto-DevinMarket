@@ -11,12 +11,16 @@ dataEntry.addEventListener("submit", (e) => {
 
 
 let itemList = [];
-let CheckedItem = [];
-let totalValue = 0;
 
-if (JSON.parse(localStorage.getItem("itemList")))
+let CheckedItem = [];
+let totalValues = 150;
+
+//recupera dados do loval storage no load dapagina
+if (JSON.parse(localStorage.getItem("itemList"))){
   itemList = JSON.parse(localStorage.getItem("itemList"));
-else localStorage.setItem("itemList", JSON.stringify(itemList));
+}else localStorage.setItem("itemList", JSON.stringify(itemList))
+  
+
 
 updateCompletedListArray();
 updateListView();
@@ -43,7 +47,7 @@ function updateListView() {
   const container = document.getElementById("itemList");
 
   container.innerHTML = "";
-
+  console.log(itemList)
   itemList.forEach(function (task) {
     const itemContainer = document.createElement("div");
     itemContainer.className = "task";
@@ -74,7 +78,6 @@ function updateListView() {
 }
 
 function checkTask(e) {
-
   let checkStatus = e.target.checked,
     task = e.target.parentElement,
     itemId = task.id,
@@ -119,7 +122,7 @@ function saveLocalList() {
 
 function purchaseValue() {
   let valor = document.querySelector(".value");
-  valor.innerHTML = totalValue;
+  valor.innerHTML = totalValues;
 }
 
 function closeModal(){
@@ -128,3 +131,14 @@ function closeModal(){
   modal.style.pointerEvents = 'none'
   modal.style.cursor ='pointer'
 }
+
+
+/*function editItemValue (value){
+  let item = JSON.parse(localStorage.getItem('itemList'))
+    .filter( prod => item.price != 0 )
+
+    item.push({
+      price: value
+    })
+    localStorage.setItem('itemList', JSON.stringify(item))
+}*/
