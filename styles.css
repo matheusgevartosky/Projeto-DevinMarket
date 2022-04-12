@@ -10,7 +10,7 @@
 
 body {
   font-family: 'Montserrat', sans-serif;
-  background: #e3f1e6 no-repeat left top fixed
+  background: #F1F1E8
 }
 
 header {
@@ -19,7 +19,7 @@ header {
   border: 0;
   padding: 20px;
   /**background-color: rgba(221, 221, 221, 0.918);**/
-  background: rgb(61, 202, 115);
+  background: #81B214;
   color: #fff !important;
   z-index: +1;
   border-bottom: 3px solid #808b82;
@@ -77,7 +77,7 @@ header {
 }
 
 .modal {
-
+  display: flex;
   position: fixed;
   top: 0;
   right: 0;
@@ -97,18 +97,24 @@ header {
   pointer-events: auto;
 }
 
+
+
 .modal>div {
-  display: flex;
-  justify-content: center;
-  flex-direction: column;
-  width: 400px;
-  position: relative;
+
+  max-width: 400px;
+  height: 150px;
+  
   margin: 10% auto;
   padding: 5px 20px 13px 20px;
   border-radius: 10px;
   background-color: #13121210;
   backdrop-filter: blur(15px);
   -webkit-backdrop-filter: blur(15px)
+}
+
+#form{
+  width: 300px;
+  height: 250px;
 }
 
 .fechar {
@@ -128,25 +134,28 @@ header {
 
 #itemList {
   padding-top: 120px;
-  margin: auto;
+  margin: 20px;
   width: 800px;
-  max-height: 950px;
-  min-height: 950px;
-  border: 1px solid black;
-  overflow:overlay
+  max-height: 800px;
+  min-height: auto;
   
+  overflow:overlay
 }
 
 .task{
   display: flex;
   justify-content: space-around;
   max-width: 700px;
-  border: 1px solid blue;
+  min-width: 125px;
+  min-height: 50px;
   padding-top: 20px;
   padding-bottom: 20px;
   margin: 15px;
   margin-left: 50px;
   border-radius: 15px;
+  background-color: #3d550857;
+    backdrop-filter: blur(15px);
+    -webkit-backdrop-filter: blur(15px)
 }
 
 
@@ -163,8 +172,6 @@ header {
   width: auto;
   height: auto;
 }
-
-
 
 .taskCheckbox {
   width: 20px;
@@ -186,16 +193,31 @@ header {
 }
 
 .total{
-  padding-top: 500px;
-  width: 350px;
-  height: 300px;
-  border: 1px solid black;
+  padding-top: 135px
 }
 
 .container{
-  padding-top: ;
-  width: 1200px;
+  
+ max-width: 1200px;
+ max-height: 800px;
   display: flex;
   justify-content: space-evenly;
   margin: auto;
+}
+
+.values{
+
+  border-radius: 10px;
+  margin: 10px;
+  min-height: 150px;
+  max-height: auto;
+  background-color: #81b61057;
+    backdrop-filter: blur(15px);
+    -webkit-backdrop-filter: blur(15px)
+  
+}
+
+.tittleValue{
+  padding: 15px;
+  margin: 20px;
 }

@@ -1,10 +1,12 @@
+const dataEntry = document.querySelector('#form');
 
-document.querySelector("#teste").addEventListener("click", function (e) {
-    
-
-    addToList(e);
-    
-  });
+dataEntry.addEventListener('submit', (e) =>{
+  e.preventDefault();
+  const rawitem = document.querySelector('#produto')
+  const item = rawitem.value
+  console.log(item)
+  addToList(item)
+})
   
   let itemList = [];
   let CheckedItem = [];
@@ -51,7 +53,7 @@ document.querySelector("#teste").addEventListener("click", function (e) {
       const taskLabel = document.createElement("label");
       taskLabel.className = "taskLabel";
       taskLabel.textContent = task.name;
-      taskLabel.htmlFor = itemList.indexOf(task);
+      //taskLabel.htmlFor = itemList.indexOf(task);
 
       const delBtn = document.createElement("span");
       delBtn.className = "deleteItemBtn";

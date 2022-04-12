@@ -34,26 +34,23 @@
         <div id="abrirModal" class="modal">
             <div>
                 <a href="#fechar" title="Fechar" class="fechar">x</a>
-                <form>
-                    <input id="produto" type="text" placeholder="Digite sua tarefa e pressione 'Enter' para salvar!" />
-                    <select name="cars" id="tipo">
-                        <option value="volvo">Volvo</option>
-                        <option value="saab">Saab</option>
-                        <option value="mercedes">Mercedes</option>
-                        <option value="audi">Audi</option>
-                    </select>
+                <form id="form">
+                    <input id="produto"  type="text" placeholder="Digite sua tarefa!" />
                     <div id="emptyFormAlert"></div>
-                    <input id="teste" type="button" value="submit" onclick="">
+                    <input id="form" type="submit" value="submit" onclick="">
                 </form>
             </div>
         </div>
     </header>
     <main>
         <div class="container">
-            <div id="itemList">
-        </div>
-            <div class="total">
-        </div>
+            <section id="itemList">
+            </section>
+            <section class="total">
+                <div class="values">
+                    <h2 class="tittleValue">Quanto você gastou :</h2>
+                </div>
+            </section>
         </div>
     </main>
     <footer class="footer">
