@@ -15,6 +15,7 @@
 </head>
 
 <body>
+
     <header>
         <div class="headerContainer">
             <div class="logo">
@@ -31,32 +32,45 @@
                 </a>
             </div>
         </div>
+
+    </header>
+    <main id="main">
         <div id="abrirModal" class="modal">
+            <!--Modal entrada de produto-->
             <div>
                 <a href="#fechar" title="Fechar" class="fechar">x</a>
                 <form id="form">
-                    <input id="produto"  type="text" placeholder="Digite sua tarefa!" />
+                    <input id="produto" type="text" placeholder="Digite sua tarefa!" />
                     <div id="emptyFormAlert"></div>
                     <input id="form" type="submit" value="submit" onclick="">
                 </form>
             </div>
         </div>
-    </header>
-    <main>
+        <div id="abrirModal2" class="modal2">
+            <!--Modal entrada entrada de valor do produto(chamado pelo JS)-->
+            <div>
+                <a onclick="closeModal()" title="Fechar" class="fechar">x</a>
+                <h1>teste</h1>
+            </div>
+        </div>
+
         <div class="container">
             <section id="itemList">
             </section>
             <section class="total">
                 <div class="values">
-                    <h2 class="tittleValue">Quanto você gastou :</h2>
+                    <h2 class="tittleValue">Quanto você gastou:</h2>
+                    <h2 class="value"></h2>
                 </div>
             </section>
         </div>
+
+
     </main>
     <footer class="footer">
-        
-            <img src="./images/">
-        
+
+        <img src="./images/">
+
     </footer>
     <script src="./script.js"></script>
 </body>

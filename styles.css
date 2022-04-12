@@ -22,7 +22,7 @@ header {
   background: #81B214;
   color: #fff !important;
   z-index: +1;
-  border-bottom: 3px solid #808b82;
+  border-bottom: 10px solid #bedd80;
 
 }
 
@@ -84,26 +84,53 @@ header {
   bottom: 0;
   left: 0;
   background: rgba(56, 49, 49, 0.377);
-  z-index: 99999;
+  z-index: 3;
   opacity: 0;
+  -webkit-transition: opacity 400ms ease-in;
+  -moz-transition: opacity 400ms ease-in;
+  transition: opacity 400ms ease-in;
+  pointer-events: none;
+  cur
+}
+
+.modal:target { /* altera a opacidade mortal para ficar visivel*/
+  opacity: 1;
+  pointer-events: auto;
+}
+
+.modal>div {
+  width: 35rem;
+  height: 15rem;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  margin: 10% auto;
+  padding: 5px 20px 13px 20px;
+  border-radius: 15px;
+  background-color: #30292910;
+  backdrop-filter: blur(15px);
+  -webkit-backdrop-filter: blur(15px)
+}
+
+.modal2 {
+  display: flex;
+  position: fixed;
+  top: 0;
+  right: 0;
+  bottom: 0;
+  left: 0;
+  background: rgba(63, 58, 58, 0.24);
+  opacity: 0;
+  z-index: 2;
   -webkit-transition: opacity 400ms ease-in;
   -moz-transition: opacity 400ms ease-in;
   transition: opacity 400ms ease-in;
   pointer-events: none;
 }
 
-.modal:target {
-  opacity: 1;
-  pointer-events: auto;
-}
-
-
-
-.modal>div {
-
-  max-width: 400px;
-  height: 150px;
-  
+.modal2>div {
+  width: 35rem;
+  height: 15rem;
   margin: 10% auto;
   padding: 5px 20px 13px 20px;
   border-radius: 10px;
@@ -113,8 +140,8 @@ header {
 }
 
 #form{
-  width: 300px;
-  height: 250px;
+  width: 250px;
+  height: 20px;
 }
 
 .fechar {
@@ -133,29 +160,37 @@ header {
 
 
 #itemList {
-  padding-top: 120px;
-  margin: 20px;
+  padding-top: 9rem;
+  
   width: 800px;
-  max-height: 800px;
-  min-height: auto;
+  height: 60rem;
+  ;
   
   overflow:overlay
 }
 
 .task{
   display: flex;
-  justify-content: space-around;
+  justify-content: space-evenly;
   max-width: 700px;
   min-width: 125px;
   min-height: 50px;
   padding-top: 20px;
   padding-bottom: 20px;
   margin: 15px;
-  margin-left: 50px;
+  margin-left: 20px;
   border-radius: 15px;
+  flex-wrap: wrap;
   background-color: #3d550857;
     backdrop-filter: blur(15px);
     -webkit-backdrop-filter: blur(15px)
+    
+}
+
+.taskLabel{
+  width: 500px;
+  min-width: none;
+  flex-wrap: wrap;
 }
 
 
@@ -176,20 +211,10 @@ header {
 .taskCheckbox {
   width: 20px;
   height: 20px;
-  border: 1px solid rgb(10, 9, 9);
+  border: none;
   border-radius: 5px;
   text-align: center;
   cursor: pointer;
-}
-
-.taskCheckbox + label.taskLabel {
-  color: rgb(218, 32, 32);
-}
-
-.taskCheckbox:checked + label.taskLabel {
-  font-style: italic;
-  color: rgba(27, 27, 27, 0.767);
-  text-decoration: line-through;
 }
 
 .total{
@@ -197,16 +222,14 @@ header {
 }
 
 .container{
-  
  max-width: 1200px;
  max-height: 800px;
   display: flex;
-  justify-content: space-evenly;
+  justify-content: space-around;
   margin: auto;
 }
 
 .values{
-
   border-radius: 10px;
   margin: 10px;
   min-height: 150px;
@@ -216,7 +239,6 @@ header {
     -webkit-backdrop-filter: blur(15px)
   
 }
-
 .tittleValue{
   padding: 15px;
   margin: 20px;
