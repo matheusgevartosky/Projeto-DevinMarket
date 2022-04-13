@@ -7,8 +7,8 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <link rel="stylesheet" type="text/css" href="./styles.css" />
     <link rel="preconnect" href="https://fonts.googleapis.com">
-    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-    <link href="https://fonts.googleapis.com/css2?family=Montserrat:wght@300&display=swap" rel="stylesheet">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Poppins&display=swap" rel="stylesheet">
     <title>DevInMarket - sua lista de compras pessoal</title>
     <script src="https://kit.fontawesome.com/9497cd1c72.js" crossorigin="anonymous"></script>
     <link rel="shortcut icon" class="fa-solid fa-shop" type="image/x-icon" />
@@ -48,9 +48,12 @@
         </div>
         <div id="abrirModal2" class="modal2">
             <!--Modal entrada entrada de valor do produto(chamado pelo JS)-->
-            <div>
+            <div id='inputValueForm'>
                 <a onclick="closeModal()" title="Fechar" class="fechar">x</a>
-                <h1>teste</h1>
+                <span>Digite o valor pago pelo produto selecionado:</span>
+                <div class="errou!"></div>
+                <input  class="inputValue" step="0.01" type="number" placeholder="Digite o valor!">
+                <input  class='submitValue' type="submit" value="Adicionar!" onclick="closeModal()">
             </div>
         </div>
 
@@ -59,8 +62,8 @@
             </section>
             <section class="total">
                 <div class="values">
-                    <h2 class="tittleValue">Quanto você gastou:</h2>
-                    <h2 class="value"></h2>
+                    <h4 class="tittleValue">Quanto você gastou até o momento:</h4>
+                    <span class="value"></span>
                 </div>
             </section>
         </div>

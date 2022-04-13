@@ -3,25 +3,19 @@ const dataEntry = document.querySelector("#form");
 dataEntry.addEventListener("submit", (e) => {
   const rawitem = document.querySelector("#produto");
   const item = rawitem.value;
-  console.log(item);
-  closeModal()
   addToList(item);
-  
+  closeModal()
 });
 
-
 let itemList = [];
-
 let CheckedItem = [];
-let totalValues = 150;
+let totalValues = 0;
 
 //recupera dados do loval storage no load dapagina
 if (JSON.parse(localStorage.getItem("itemList"))){
   itemList = JSON.parse(localStorage.getItem("itemList"));
 }else localStorage.setItem("itemList", JSON.stringify(itemList))
   
-
-
 updateCompletedListArray();
 updateListView();
 
@@ -43,6 +37,7 @@ function addToList(task) {
   localStorage.setItem("itemList", JSON.stringify(itemList));
 }
 
+//cria elementos conforme os items são adicionados
 function updateListView() {
   const container = document.getElementById("itemList");
 
@@ -57,10 +52,11 @@ function updateListView() {
     taskLabel.className = "taskLabel";
     taskLabel.textContent = task.name;
 
-    const delBtn = document.createElement("span");
+    const delBtn = document.createElement("button");
     delBtn.className = "deleteItemBtn";
-    delBtn.textContent = "x";
+    delBtn.textContent = " X ";
     delBtn.onclick = deleteThisItem;
+    delBtn.style.cursor = 'pointer'
 
     const checkbox = document.createElement("input");
     checkbox.className = "taskCheckbox";
@@ -69,14 +65,16 @@ function updateListView() {
     checkbox.checked = task.done;
     checkbox.onclick = checkTask;
 
-    itemContainer.appendChild(taskLabel);
     itemContainer.appendChild(checkbox);
+    itemContainer.appendChild(taskLabel);
     itemContainer.appendChild(delBtn);
     container.appendChild(itemContainer);
   });
   purchaseValue();
 }
 
+/*função que checa se o item foi marcado, caso sim
+*/
 function checkTask(e) {
   let checkStatus = e.target.checked,
     task = e.target.parentElement,
@@ -108,6 +106,7 @@ function checkTask(e) {
   saveLocalList();
 }
 
+//delata item selecionado do array
 function deleteThisItem(e) {
   itemList.splice(e.target.parentElement.id, 1);
 
@@ -116,15 +115,13 @@ function deleteThisItem(e) {
   updateListView();
 }
 
+//persiste array de items no local Storage
 function saveLocalList() {
   localStorage.setItem("itemList", JSON.stringify(itemList));
 }
 
-function purchaseValue() {
-  let valor = document.querySelector(".value");
-  valor.innerHTML = totalValues;
-}
 
+//fecha modal
 function closeModal(){
   const modal = document.querySelector(".modal2");
   modal.style.opacity = "0";
@@ -133,12 +130,24 @@ function closeModal(){
 }
 
 
-/*function editItemValue (value){
-  let item = JSON.parse(localStorage.getItem('itemList'))
-    .filter( prod => item.price != 0 )
+  const getValue = document.querySelector('.submitValue')
 
-    item.push({
-      price: value
-    })
-    localStorage.setItem('itemList', JSON.stringify(item))
-}*/
+  getValue.addEventListener('click', () => {
+    const rawvalue = document.querySelector(".inputValue");
+    const item = parseFloat(rawvalue.value);
+    if(item != Number){
+      alert('O valor inserido é invalido! Digite apenas numeros!')
+    }else{
+      totalValues += item
+    purchaseValue()
+    }
+    
+  })
+
+
+  function purchaseValue() {
+    let valor = document.querySelector(".value");
+    valor.innerHTML = `R$ ${totalValues}`;
+  }
+
+  
