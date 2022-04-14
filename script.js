@@ -132,7 +132,8 @@ function updateItemValue(id){
     if(isNaN(item)){
       alert('O valor inserido é inválido! Digite apenas números!')
     }else{
-      itemList[id].price = item
+      
+      addValue(id, item)
       purchaseValue()
     }
   })
@@ -149,6 +150,16 @@ function updateItemValue(id){
     modal.style.opacity = "1";
     modal.style.pointerEvents = 'auto'
     updateItemValue(id)
+  }
+
+  function addValue (id, item) {
+    for(let i of itemList){
+      if(itemList[i] != id){
+        console.log('passou aqui  ')
+      }else{
+        itemList[id].price = item
+      }
+    }
   }
   
 
