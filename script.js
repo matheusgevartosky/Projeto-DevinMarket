@@ -80,13 +80,10 @@ function checkTask(e) {
     task = e.target.parentElement,
     itemId = task.id,
     removed = false;
-
   itemList[itemId].done = checkStatus;
   purchaseValue();
   if (CheckedItem.length === 0) {
-    const modal = document.querySelector(".modal2");
-    modal.style.opacity = "1";
-    modal.style.pointerEvents = 'auto'
+    openModal(itemId)
     CheckedItem.push(itemId);
   } else {
     CheckedItem.forEach(function (index) {
@@ -96,9 +93,7 @@ function checkTask(e) {
       }
     });
     if (!removed) {
-      const modal = document.querySelector(".modal2");
-      modal.style.opacity = "1";
-      modal.style.pointerEvents = 'auto'
+      openModal(itemId)
       CheckedItem.push(itemId);
       CheckedItem.sort(); // ordena todos os itens do array pelo id, não importando a ordem que foi adicionado
     }
@@ -129,25 +124,36 @@ function closeModal(){
   modal.style.cursor ='pointer'
 }
 
-
+function updateItemValue(id){
   const getValue = document.querySelector('.submitValue')
-
   getValue.addEventListener('click', () => {
     const rawvalue = document.querySelector(".inputValue");
-    const item = parseFloat(rawvalue.value);
-    if(item != Number){
-      alert('O valor inserido é invalido! Digite apenas numeros!')
+    const item = parseFloat(rawvalue.value)
+    if(isNaN(item)){
+      alert('O valor inserido é inválido! Digite apenas números!')
     }else{
-      totalValues += item
-    purchaseValue()
+      itemList[id].price = item
+      purchaseValue()
     }
-    
   })
-
-
+}
+ 
   function purchaseValue() {
+    let total = itemList.reduce((total, item) => total + item.price, 0)
     let valor = document.querySelector(".value");
-    valor.innerHTML = `R$ ${totalValues}`;
+    valor.innerHTML = `R$ ${total}`;
   }
 
+  function openModal (id){
+    const modal = document.querySelector(".modal2");
+    modal.style.opacity = "1";
+    modal.style.pointerEvents = 'auto'
+    updateItemValue(id)
+  }
+  
+
+  
+
+
+  
   

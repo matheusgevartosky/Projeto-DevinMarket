@@ -1,3 +1,6 @@
+html {
+  scroll-behavior:smooth;
+}
 * {
   box-sizing: border-box;
   margin: 0;
@@ -9,16 +12,21 @@
 
 
 body {
-  font-family: 'Montserrat', sans-serif;
-  background: #F1F1E8
+ font-family: 'Poppins', sans-serif;;
+  background: #F1F1E8;
+  
+  
+  
 }
+
+        /*INICIO ESTILIZAÇÃO nav BAR */
 
 header {
   width: 100%;
   position: fixed;
   border: 0;
-  padding: 20px;
-  /**background-color: rgba(221, 221, 221, 0.918);**/
+  padding:10px ;
+  
   background: #81B214;
   color: #fff !important;
   z-index: +1;
@@ -57,6 +65,13 @@ header {
   ;
 }
 
+.logo{
+  max-width: 80px;
+  max-height: 80px;
+  margin: 0;
+  border: 0;
+}
+
 .cart {
   margin-right: 10px;
 }
@@ -78,6 +93,9 @@ header {
   background-color: rgba(255, 255, 255, 0.842);
 }
 
+        /* FIM ESTILIZAÇÃO NAV BAR */
+        /* INICIO ESTILIZAÇÂO MODAL 1/2 */
+
 .modal {
   display: flex;
   position: fixed;
@@ -92,7 +110,7 @@ header {
   -moz-transition: opacity 400ms ease-in;
   transition: opacity 400ms ease-in;
   pointer-events: none;
-  c
+  
 }
 /* altera a opacidade mortal para ficar visivel*/
 .modal:target { 
@@ -133,11 +151,14 @@ header {
 .modal2>div {
   max-width: 35rem;
   max-height: 15rem;
-  min-width: 20rem;
+  display: flex;
+  justify-content: center;
+  align-items: center;
   margin: 10% auto;
   padding: 5px 20px 13px 20px;
-  border-radius: 10px;
-  background-color: #13121210;
+  border-radius: 15px;
+  border: 1px solid #81b61057;
+  background-color: #30292910;
   backdrop-filter: blur(15px);
   -webkit-backdrop-filter: blur(15px)
 }
@@ -161,19 +182,22 @@ header {
   color: #8d0000;
 }
 
+     /* FIM EDIÇÂO MODAL */
+
+     /*INICIO ESTILIZAÇÂO DE Itens do MAIN*/
 
 #itemList {
   padding-top: 9rem;
   width: 100vh;
-  height: 95vh;
+  height: 100vh;
   overflow:overlay
 }
 
 .task{
   display: flex;
-  justify-content: space-evenly;
+  justify-content: space-around;
   align-items: center;
-  max-width: 700px;
+  max-width: 300vh;
   min-width: 125px;
   min-height: 75px;
   padding: 20px;
@@ -188,11 +212,60 @@ header {
 }
 
 .taskLabel{
-  width: 500px;
+  width: 75vh;
   min-width: none;
-  flex-wrap: wrap;
+  word-wrap: break-word;
 }
 
+.taskCheckbox {
+  width: 20px;
+  height: 20px;
+  border: none;
+  border-radius: 50px;
+  text-align: center;
+  cursor: pointer;
+}
+
+.taskCheckbox:checked +.taskLabel{
+  text-decoration: line-through;
+  font-style: italic;
+  color: grey;
+}
+
+.container{
+  max-width: 1200px;
+  max-height: 800px;
+   display: flex;
+   justify-content: space-evenly;
+   margin: auto;
+ }
+
+ .values{
+  border-radius: 10px;
+  margin: 10px;
+  min-height: 150px;
+  max-height: auto;
+  box-shadow: inset 1px 1px 0 rgb(190, 190, 190), 0 2px 3px rgb(0 0 0 / 40%);
+  background-color: #81b61057;
+    backdrop-filter: blur(15px);
+    -webkit-backdrop-filter: blur(15px)
+ }
+
+ .deleteItemBtn{
+  width: 20px;
+  height: 20px;
+  border: none;
+  border-radius: 50px;
+}
+
+.deleteItemBtn:hover{
+  background-color: #ff4545;
+}
+
+.tittleValue{
+  margin: 5px;
+  
+}
 
 .footer {
   object-fit: contain;
@@ -208,39 +281,42 @@ header {
   height: auto;
 }
 
-.taskCheckbox {
-  width: 20px;
-  height: 20px;
-  border: none;
-  border-radius: 5px;
-  text-align: center;
-  cursor: pointer;
-}
 
 .total{
-  padding-top: 135px
-}
-
-.container{
- max-width: 1200px;
- max-height: 800px;
-  display: flex;
-  justify-content: space-evenly;
-  margin: auto;
+  margin-top: 9.5rem;
 }
 
 .values{
-  border-radius: 10px;
-  margin: 10px;
-  min-height: 150px;
-  max-height: auto;
-  box-shadow: inset 1px 1px 0 rgb(190, 190, 190), 0 2px 3px rgb(0 0 0 / 40%);
-  background-color: #81b61057;
-    backdrop-filter: blur(15px);
-    -webkit-backdrop-filter: blur(15px)
+  max-width: 25vh;
+  padding: 5px;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+}
+
+
+
+
+     /* FIM EDIÇÂO MODAL */
+
+     /*INICIO ESTILIZAÇÂO DE Itens do MAIN*/
+
+
+.footer{
+  background: url('./Images/teste8.png');
+  height: 150px
+
+}
+
+
+
+
+
   
-}
-.tittleValue{
-  padding: 15px;
-  margin: 20px;
-}
+
+
+
+
+
+
+
