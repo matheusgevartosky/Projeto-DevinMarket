@@ -28,32 +28,32 @@
                 </ul>
             </nav>
             <div class="cart">
-                <a href="#abrirModal"><i class="fa-solid fa-cart-shopping"></i> Adicionar Item!
+                <a onclick="openModal(1)"><i class="fa-solid fa-cart-shopping"></i> Adicionar Item!
                 </a>
             </div>
         </div>
 
     </header>
     <main id="main">
-        <div id="abrirModal" class="modal">
+        <div id="abrirModal" class="modal1">
             <!--Modal entrada de produto-->
             <div>
-                <a href="#fechar" title="Fechar" class="fechar">x</a>
+                <a onclick="closeModal(1)" title="Fechar" class="fechar">x</a>
                 <form id="form">
                     <input id="produto" type="text" placeholder="Digite sua tarefa!" />
                     <div id="emptyFormAlert"></div>
-                    <input id="form" type="submit" value="submit" onclick="">
+                    <input class="btn" type="submit" value="submit" onclick="">
                 </form>
             </div>
         </div>
         <div id="abrirModal2" class="modal2">
             <!--Modal entrada entrada de valor do produto(chamado pelo JS)-->
             <div id='inputValueForm'>
-                <a onclick="closeModal()" title="Fechar" class="fechar">x</a>
+                <a onclick="closeModal(2)" title="Fechar" class="fechar">x</a>
                 <span>Digite o valor pago pelo produto selecionado:</span>
                 <div class="errou!"></div>
                 <input  class="inputValue" step="0.01" type="number" placeholder="Digite o valor!">
-                <input  class='submitValue' type="submit" value="Adicionar!" onclick="closeModal()">
+                <input  class='submitValue' type="reset" value="Adicionar!" onclick="closeModal(2)">
             </div>
         </div>
 
@@ -62,7 +62,7 @@
             </section>
             <section class="total">
                 <div class="values">
-                    <h4 class="tittleValue">Quanto você gastou até o momento:</h4>
+                    <h5 class="tittleValue">Quanto você gastou até o momento:</h5>
                     <span class="value"></span>
                 </div>
             </section>
