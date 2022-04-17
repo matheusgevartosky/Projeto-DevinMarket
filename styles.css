@@ -1,6 +1,12 @@
 html {
   scroll-behavior:smooth;
 }
+
+input[type=number]::-webkit-inner-spin-button, 
+input[type=number]::-webkit-outer-spin-button { 
+  -webkit-appearance: none; 
+  margin: 0; 
+}
 * {
   box-sizing: border-box;
   margin: 0;
@@ -91,7 +97,7 @@ header {
 }
 
 .cart a:hover {
-  background-color: rgba(255, 255, 255, 0.842);
+  background-color: #bedd80;
 }
 
         /* FIM ESTILIZAÇÃO NAV BAR */
@@ -119,12 +125,18 @@ header {
   pointer-events: auto;
 }
 
+
+.btn:hover{
+  background-color: #bedd80;
+}
+
 .modal1>div {
   max-width: 35rem;
   max-height: 10rem;
   display: flex;
   justify-content: center;
   align-items: center;
+  flex-direction: row;
   margin: 10% auto;
   padding: 5px 20px 13px 20px;
   border-radius: 15px;
@@ -137,6 +149,7 @@ header {
 .modal2 {
   display: flex;
   position: fixed;
+  
   top: 0;
   right: 0;
   bottom: 0;
@@ -155,6 +168,7 @@ header {
   max-height: 15rem;
   display: flex;
   justify-content: center;
+  flex-direction: column;
   align-items: center;
   margin: 10% auto;
   padding: 5px 20px 13px 20px;
@@ -164,6 +178,22 @@ header {
   backdrop-filter: blur(15px);
   -webkit-backdrop-filter: blur(15px)
 }
+
+.inputValue{
+  margin: 2vh;
+}
+
+.submitValue{
+ 
+ padding: 10px;
+  border-radius: 50px;
+  text-align: center;
+}
+
+.submitValue:hover{
+  background-color: #bedd80;
+}
+
 
 .modal3 {
   display: flex;
@@ -211,12 +241,13 @@ header {
   border-radius: 50%;
   font-size: 16px;
   color: #8d0000;
+  cursor: pointer;
 }
 
 .btn{
   padding: 10px;
   border-radius: 50px;
-  bo
+  
 }
 
      /* FIM EDIÇÂO MODAL */
