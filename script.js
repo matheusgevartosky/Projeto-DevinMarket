@@ -1,15 +1,39 @@
-const dataEntry = document.querySelector("#form");
 
-dataEntry.addEventListener("submit", (e) => {
+
+
+var iddomomento = null;
+
+const dataEntry = document.querySelector(".btn");
+
+dataEntry.addEventListener("click", () => {
   const rawitem = document.querySelector("#produto");
   const item = rawitem.value;
-  addToList(item);
-  closeModal()
+  console.log(item)
+  if(item == ""){
+    rawitem.style.opacity = "0";
+    rawitem.style.pointerEvents = 'none'
+    rawitem.style.cursor ='pointer'
+    let messageError = document.querySelector('#emptyFormAlert')
+    messageError.innerHTML = `Oopa...Você não inseriu um item!`
+    document.getElementById("produto").reset()
+
+  }else{
+    rawitem.style.opacity = "0";
+    rawitem.style.pointerEvents = 'none'
+    rawitem.style.cursor ='pointer'
+    
+    let messageError = document.querySelector('#emptyFormAlert')
+    messageError.innerHTML = `Parabéns, voce adicionou o item ${ item } na sua lista!`
+    
+    addToList(item);
+    document.getElementById("produto").reset()
+  }
 });
 
 let itemList = [];
 let CheckedItem = [];
 let totalValues = 0;
+var iddomomento = ""; 
 
 //recupera dados do loval storage no load dapagina
 if (JSON.parse(localStorage.getItem("itemList"))){
@@ -29,20 +53,25 @@ function addToList(task) {
   itemList.push({
     name: task,
     done: false,
-    price: "",
+    price: null,
   });
 
   updateListView();
+
 
   localStorage.setItem("itemList", JSON.stringify(itemList));
 }
 
 //cria elementos conforme os items são adicionados
 function updateListView() {
-  const container = document.getElementById("itemList");
-
+  if(itemList.length == 0){
+    const container = document.getElementById("itemList");
+    container.innerHTML = "Nenhum item cadastrado";
+  }else{
+    const container = document.getElementById("itemList");
   container.innerHTML = "";
-  console.log(itemList)
+  
+
   itemList.forEach(function (task) {
     const itemContainer = document.createElement("div");
     itemContainer.className = "task";
@@ -70,6 +99,8 @@ function updateListView() {
     itemContainer.appendChild(delBtn);
     container.appendChild(itemContainer);
   });
+  }
+  
   purchaseValue();
 }
 
@@ -83,17 +114,24 @@ function checkTask(e) {
   itemList[itemId].done = checkStatus;
   purchaseValue();
   if (CheckedItem.length === 0) {
-    openModal(itemId)
+    iddomomento = itemId
+    openModal(2)
     CheckedItem.push(itemId);
+    
   } else {
     CheckedItem.forEach(function (index) {
-      if (itemId === index) {
-        CheckedItem.splice(CheckedItem.indexOf(index), 1);
+      if (itemId === index ) {
+        CheckedItem.splice(CheckedItem.indexOf(index));
         removed = true;
+        itemList[itemId].price = null
+        purchaseValue()
+        updateCompletedListArray()
       }
-    });
+      })
     if (!removed) {
-      openModal(itemId)
+      iddomomento = itemId
+      openModal(2)
+      purchaseValue()
       CheckedItem.push(itemId);
       CheckedItem.sort(); // ordena todos os itens do array pelo id, não importando a ordem que foi adicionado
     }
@@ -117,27 +155,36 @@ function saveLocalList() {
 
 
 //fecha modal
-function closeModal(){
-  const modal = document.querySelector(".modal2");
+function closeModal(num){
+  const modal = document.querySelector(".modal" + num);
   modal.style.opacity = "0";
   modal.style.pointerEvents = 'none'
   modal.style.cursor ='pointer'
+  
 }
 
-function updateItemValue(id){
+
+
   const getValue = document.querySelector('.submitValue')
   getValue.addEventListener('click', () => {
     const rawvalue = document.querySelector(".inputValue");
     const item = parseFloat(rawvalue.value)
+    
     if(isNaN(item)){
       alert('O valor inserido é inválido! Digite apenas números!')
+      
     }else{
       
-      addValue(id, item)
+      itemList[iddomomento].price = item
+      
       purchaseValue()
+      saveLocalList();
+      updateCompletedListArray();
+      updateListView();
+      
     }
   })
-}
+
  
   function purchaseValue() {
     let total = itemList.reduce((total, item) => total + item.price, 0)
@@ -145,26 +192,11 @@ function updateItemValue(id){
     valor.innerHTML = `R$ ${total}`;
   }
 
-  function openModal (id){
-    const modal = document.querySelector(".modal2");
+  function openModal(num){
+    const modal = document.querySelector(".modal" + num);
     modal.style.opacity = "1";
     modal.style.pointerEvents = 'auto'
-    updateItemValue(id)
+    
   }
 
-  function addValue (id, item) {
-    for(let i of itemList){
-      if(itemList[i] != id){
-        console.log('passou aqui  ')
-      }else{
-        itemList[id].price = item
-      }
-    }
-  }
-  
-
-  
-
-
-  
   

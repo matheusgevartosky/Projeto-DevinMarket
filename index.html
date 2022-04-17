@@ -38,12 +38,13 @@
         <div id="abrirModal" class="modal1">
             <!--Modal entrada de produto-->
             <div>
-                <a onclick="closeModal(1)" title="Fechar" class="fechar">x</a>
+                <a onclick="" title="Fechar" class="fechar">x</a>
                 <form id="form">
-                    <input id="produto" type="text" placeholder="Digite sua tarefa!" />
+                    <input id="produto" type="text" placeholder="Digite o nome doproduto!" />
                     <div id="emptyFormAlert"></div>
-                    <input class="btn" type="submit" value="submit" onclick="">
+                    <input class="btn" type="submit" value="Adicionar!!" onclick="">
                 </form>
+                
             </div>
         </div>
         <div id="abrirModal2" class="modal2">
@@ -54,6 +55,15 @@
                 <div class="errou!"></div>
                 <input  class="inputValue" step="0.01" type="number" placeholder="Digite o valor!">
                 <input  class='submitValue' type="reset" value="Adicionar!" onclick="closeModal(2)">
+            </div>
+        </div>
+        <div id="abrirModal3" class="modal3">
+            <!--Modal entrada entrada de valor do produto(chamado pelo JS)-->
+            <div id='inputValueForm'>
+                <a onclick="closeModal(3)" title="Fechar" class="fechar">x</a>
+                <div>
+                    <img class="imagemGif"> 
+                </div>
             </div>
         </div>
 
@@ -67,6 +77,8 @@
                 </div>
             </section>
         </div>
+
+       
     </main>
     <footer class="footer">
         

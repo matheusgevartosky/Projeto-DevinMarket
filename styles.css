@@ -74,6 +74,7 @@ header {
 
 .cart {
   margin-right: 10px;
+  cursor: pointer;
 }
 
 .cart a {
@@ -96,37 +97,38 @@ header {
         /* FIM ESTILIZAÇÃO NAV BAR */
         /* INICIO ESTILIZAÇÂO MODAL 1/2 */
 
-.modal {
-  display: flex;
+.modal1 {
+   display: flex;
   position: fixed;
   top: 0;
   right: 0;
   bottom: 0;
   left: 0;
-  background: rgba(56, 49, 49, 0.377);
-  z-index: 3;
+  background: rgba(63, 58, 58, 0.24);
   opacity: 0;
-  -webkit-transition: opacity 400ms ease-in;
-  -moz-transition: opacity 400ms ease-in;
-  transition: opacity 400ms ease-in;
+  z-index: 2;
+  -webkit-transition: opacity 800ms ease-in-out;
+  -moz-transition: opacity 800ms ease-in-out;
+  transition: opacity 800ms ease-in-out;
   pointer-events: none;
   
 }
 /* altera a opacidade mortal para ficar visivel*/
-.modal:target { 
+.modal1:target { 
   opacity: 1;
   pointer-events: auto;
 }
 
-.modal>div {
+.modal1>div {
   max-width: 35rem;
-  max-height: 15rem;
+  max-height: 10rem;
   display: flex;
   justify-content: center;
   align-items: center;
   margin: 10% auto;
   padding: 5px 20px 13px 20px;
   border-radius: 15px;
+  border: 1px solid #81b61057;
   background-color: #30292910;
   backdrop-filter: blur(15px);
   -webkit-backdrop-filter: blur(15px)
@@ -163,10 +165,39 @@ header {
   -webkit-backdrop-filter: blur(15px)
 }
 
-#form{
-  width: 250px;
-  height: 20px;
+.modal3 {
+  display: flex;
+ position: fixed;
+ top: 0;
+ right: 0;
+ bottom: 0;
+ left: 0;
+ background: rgba(63, 58, 58, 0.24);
+ opacity: 0;
+ z-index: 2;
+ -webkit-transition: opacity 800ms ease-in-out;
+ -moz-transition: opacity 800ms ease-in-out;
+ transition: opacity 800ms ease-in-out;
+ pointer-events: none;
+ 
 }
+
+
+.modal3>div {
+ max-width: 35rem;
+ max-height: 10rem;
+ display: flex;
+ justify-content: center;
+ align-items: center;
+ margin: 10% auto;
+ padding: 5px 20px 13px 20px;
+ border-radius: 15px;
+ border: 1px solid #81b61057;
+ background-color: #30292910;
+ backdrop-filter: blur(15px);
+ -webkit-backdrop-filter: blur(15px)
+}
+
 
 .fechar {
   position: absolute;
@@ -182,6 +213,12 @@ header {
   color: #8d0000;
 }
 
+.btn{
+  padding: 10px;
+  border-radius: 50px;
+  bo
+}
+
      /* FIM EDIÇÂO MODAL */
 
      /*INICIO ESTILIZAÇÂO DE Itens do MAIN*/
@@ -189,7 +226,7 @@ header {
 #itemList {
   padding-top: 9rem;
   width: 100vh;
-  height: 100vh;
+  height: 94vh;
   overflow:overlay
 }
 
@@ -251,6 +288,11 @@ header {
     -webkit-backdrop-filter: blur(15px)
  }
 
+ .value{
+   font-size: x-large;
+   padding: 20px;
+ }
+
  .deleteItemBtn{
   width: 20px;
   height: 20px;
@@ -304,9 +346,13 @@ header {
 
 .footer{
   background: url('./Images/teste8.png');
-  height: 150px
+  height: 20vh
 
 }
+
+
+
+
 
 
 
