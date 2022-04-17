@@ -16,6 +16,10 @@ input[type=number]::-webkit-outer-spin-button {
   width: 0px;
 }
 
+input[type=checkbox]{
+  accent-color: #81B214;
+}
+
 
 body {
  font-family: 'Poppins', sans-serif;;
